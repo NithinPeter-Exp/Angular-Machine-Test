@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="header">
+        <h5>Asset Info</h5>
+        <!--Serch Functionality-->
+        <div class="form-group row">
+            
+            <input style="width: 60%;" class="form-control col-md-3" type="text" 
+             placeholder="Search here..." 
+            [(ngModel)]="tempFilter">
+            <button class="btn btn-success col-md-2" style="margin-left: 5px;" (click)="filter=tempFilter">Search</button>
+            <button class="btn btn-secondary col-md-2" style="margin-left: 5px;" (click)="filter=''">Reset</button>            
+        </div>
+        <br>
+        <a [routerLink]="['../addasset']" class="btn btn-primary" >Add Asset</a>
+        
+    </div>
+    <table class="table table-bodered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Made By</th>
+                <th>Model</th>
+                <th>Serial Number</th>
+                <th>Created Date</th>
+                <th>Purchase Date</th>
+                <th>Waranty </th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+                    
+                <tr *ngFor="let asset of managerService.assets | filter:filter | paginate: {itemsPerPage:5 , currentPage: page}">
+                    <td  >{{asset.AmId}}</td>
+                    <td  >{{asset.AmAtypeId}}</td>
+                    <td  >{{asset.AmMake}}</td>
+                    <td  >{{asset.AmModel}}</td>
+                    <td  >{{asset.AmSnumber}}</td>
+                    <td  >{{asset.AmMyyear}}</td>
+                    <td  >{{asset.AmPdate}}</td>
+                    <td  >{{asset.AmWarranty}}</td>
+                    <td  >
+                        <button class="btn btn-sm btn-outline-danger"
+                        (click)="deleteByIsAvtiveEmployeeRecord(asset)" >X</button> &nbsp;
+                        <button  (click)="updateAsset(asset.AmId)" class="btn btn-info" style="margin-left:10px">Edit</button>                    
+                    </td>
+                    
+                </tr>
+            
+        </tbody>
+
+    </table>
+    <div class="footer">
+        <!--Pagination  : Page Change-->
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+
+</div>
+

@@ -1,0 +1,150 @@
+<form name="assetForm" #form="ngForm" autocomplete="off"
+(ngSubmit)="onSubmit(form)">
+
+    
+        <h2 style="padding-left: 38%;">Manage Asset</h2>
+   
+    <!--am ID-->
+    <input type="hidden" name="AmId" [(ngModel)]="managerService.formData.AmId">
+
+    <!--Type Name-->
+    <div class="form-group">
+        <label>Type</label>
+        <input AmAtypeId="Name" #AmAtypeId="ngModel" [(ngModel)]="managerService.formData.AmAtypeId"
+            class="form-control" placeholder="Enter Type" minlength="10" maxlength="25" required
+            [ngClass]="{'is-invalid': AmAtypeId.touched && AmAtypeId.invalid}" />
+
+        <div class="validation-error" *ngIf="AmAtypeId.touched && AmAtypeId.invalid">
+            <div *ngIf="Name.errors.required">First Name is Required</div>
+
+        </div>
+    </div>
+    <br>
+
+    <!--AmMake-->
+    <div class="form-group">
+        <label>Make</label>
+        <input name="AmMake" #AmMake="ngModel" [(ngModel)]="managerService.formData.AmMake"
+            class="form-control" placeholder="Enter Designation" minlength="2" maxlength="25" required
+            [ngClass]="{'is-invalid': AmMake.touched && AmMake.invalid}"/>
+
+        <div class="validation-error" *ngIf="AmMake.touched && AmMake.invalid">
+            <div *ngIf="Occupation.errors.required">Ocuupation is Required</div>
+
+        </div>
+    </div>
+    <br>
+
+    <!--AmAd-->
+    <div class="form-group">
+        <label>Definition</label>
+        <input name="AmAd" #AmAd="ngModel" [(ngModel)]="managerService.formData.AmAd"
+            class="form-control" placeholder="Enter Definition" minlength="2" maxlength="25" required
+            [ngClass]="{'is-invalid': AmAd.touched && AmAd.invalid}"/>
+
+        <div class="validation-error" *ngIf="AmAd.touched && AmAd.invalid">
+            <div *ngIf="Occupation.errors.required">Ocuupation is Required</div>
+
+        </div>
+    </div>
+    <br>
+
+    <!--AmModel-->
+    <div class="form-group">
+        <label>Model</label>
+        <input name="AmModel" #AmModel="ngModel" [(ngModel)]="managerService.formData.AmModel"
+            class="form-control" placeholder="Enter Model" minlength="2" maxlength="25" required
+            [ngClass]="{'is-invalid': AmModel.touched && AmModel.invalid}"/>
+
+        <div class="validation-error" *ngIf="AmModel.touched && AmModel.invalid">
+            <div *ngIf="AmModel.errors.required">Model is Required</div>
+
+        </div>
+    </div>
+    <br>
+
+    <!--AmSnumber-->
+    <div class="form-group">
+        <label>Serial Number</label>
+        <input name="AmSnumber" #AmSnumber="ngModel" [(ngModel)]="managerService.formData.AmSnumber"
+            class="form-control" placeholder="Enter Model" minlength="2" maxlength="25" required
+            [ngClass]="{'is-invalid': AmSnumber.touched && AmSnumber.invalid}"/>
+
+        <div class="validation-error" *ngIf="AmSnumber.touched && AmSnumber.invalid">
+            <div *ngIf="AmSnumber.errors.required">Serial Number is Required</div>
+
+        </div>
+    </div>
+    <br>
+
+    
+
+
+    <!--AmMyyear-->
+    <div class="form-group">
+        <label>Created year</label>
+        <input type="text" name="AmMyyear" #AmMyyear="ngModel" [(ngModel)]="managerService.formData.AmMyyear"
+            class="form-control"  required
+            [ngClass]="{'is-invalid': AmMyyear.touched && AmMyyear.invalid}"/>
+
+        <div class="validation-error" *ngIf="AmMyyear.touched && AmMyyear.invalid">
+            <div *ngIf="AmMyyear.errors.required">Created year is Required</div>
+        </div>
+    </div>
+    <br>
+
+    <!--AmPdate-->
+    <div class="form-group">
+        <label>Purchase Date</label>
+        <input type="date" name="AmPdate" #AmPdate="ngModel" [(ngModel)]="managerService.formData.AmPdate"
+            class="form-control"  required
+            [ngClass]="{'is-invalid': AmPdate.touched && AmPdate.invalid}"/>
+
+        <div class="validation-error" *ngIf="AmPdate.touched && AmPdate.invalid">
+            <div *ngIf="AmPdate.errors.required">Purchase  is Required</div>
+        </div>
+    </div>
+    <br>
+
+    <!--AmFrom-->
+    <div class="form-group">
+        <label>Warranty From</label>
+        <input type="date" name="AmFrom" #AmFrom="ngModel" [(ngModel)]="managerService.formData.AmFrom"
+            class="form-control"  
+            [ngClass]="{'is-invalid': AmFrom.touched && AmFrom.invalid}"/>
+
+        <div class="validation-error" *ngIf="AmFrom.touched && AmFrom.invalid">
+            <div *ngIf="AmFrom.errors.required">Warranty wrong format</div>
+        </div>
+    </div>
+    <br>
+
+    <!--AmTo-->
+    <div class="form-group">
+        <label>Warranty To</label>
+        <input type="date" name="AmTo" #AmTo="ngModel" [(ngModel)]="managerService.formData.AmTo"
+            class="form-control"  
+            [ngClass]="{'is-invalid': AmTo.touched && AmTo.invalid}"/>
+
+        <div class="validation-error" *ngIf="AmTo.touched && AmTo.invalid">
+            <div *ngIf="AmTo.errors.required">Warranty To wrong format</div>
+        </div>
+    </div>
+    <br>
+    
+
+    
+
+    <!--Submit Button-->
+    <div class="form-group">
+        <br>
+        <button type="submit" [disabled]="!(form.valid && form.dirty)  || isSubmitted == true"
+            class="btn btn-lg btn-primary form-control" >
+            Submit
+        </button>
+    </div>
+    <br>
+
+    
+
+</form>
